@@ -33,7 +33,7 @@ export default function ScrollToTop() {
         showButton ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10 pointer-events-none'
       }`}
     >
-      <i className="fa-solid fa-chevron-up text-white"></i>
+      <i className="ri-arrow-up-s-line text-white"></i>
     </button>
   );
 }

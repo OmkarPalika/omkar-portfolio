@@ -1,37 +1,81 @@
 // components/sections/ServicesSection.tsx
-import SectionLayout from '../SectionLayout';
+import SectionLayout from "../SectionLayout";
 
 export default function ServicesSection() {
   const services = [
     {
       id: 1,
-      name: 'Web Development',
-      description: 'Custom website development using the latest technologies like Next.js, React, and modern backend solutions to create fast, responsive, and secure websites.',
-      icon: 'fa-solid fa-code'
+      name: "Python Project Development",
+      description:
+        "Custom Python development for automation, data analysis, machine learning and backend services using modern frameworks and best practices.",
+      icon: "fa-brands fa-python",
     },
     {
       id: 2,
-      name: 'Web Design',
-      description: 'Creating visually appealing and user-friendly interfaces with a focus on user experience, modern aesthetics, and brand identity to engage visitors effectively.',
-      icon: 'fa-solid fa-paintbrush'
+      name: "SEO Web Development",
+      description:
+        "Building SEO-optimized websites with technical best practices, content optimization, and analytics integration to improve search rankings and visibility.",
+      icon: "fa-solid fa-magnifying-glass-chart",
     },
     {
       id: 3,
-      name: 'SEO (Web Pages)',
-      description: 'Optimizing websites to rank higher in search engines, improving visibility, traffic, and conversion rates through technical SEO, content optimization, and analytics.',
-      icon: 'fa-solid fa-magnifying-glass-chart'
-    }
+      name: "Application Development",
+      description:
+        "Full-stack application development using modern technologies to create scalable, secure and feature-rich web and mobile applications.",
+      icon: "fa-solid fa-mobile-screen-button",
+    },
+    {
+      id: 4,
+      name: (
+        <>
+          Mentorship (@
+          <a
+            href="https://unstop.com/mentor/omkarpalika?ref=AsfSjJT"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 hover:text-[var(--color-brand-green)] group transition-all duration-300 hover:translate-x-[-2px] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-green)] focus:ring-opacity-50"
+            aria-label="View Mentorship Profile on Unstop"
+          >
+            &nbsp;Unstop
+            <i className="ri-arrow-right-up-line text-white text-sm opacity-60 group-hover:opacity-100 hover:translate-x-1 transition-all duration-300 ease-in-out" aria-hidden="true"></i>
+          </a>
+          )
+        </>
+      ),
+      description:
+        "Providing guidance and support to aspiring developers through personalized mentoring sessions, helping them navigate their tech career journey and skill development.",
+      icon: "ri-shake-hands-line",
+    },
+    {
+      id: 5,
+      name: "Research Contributor",
+      description:
+        "Contributing to academic and industry research projects in engineering tech departments, with a focus on emerging technologies and innovative solutions.",
+      icon: "ri-file-list-3-line",
+    },
+    {
+      id: 6,
+      name: "AI/ML Development",
+      description:
+        "Developing sophisticated artificial intelligence and machine learning solutions, including model development, training, and deployment for various business applications.",
+      icon: "ri-sparkling-2-line",
+    },
   ];
 
   return (
     <SectionLayout id="services" title="SERVICES I OFFER">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div key={service.id} className="bg-card-bg rounded-3xl p-8 shadow-xl hover:bg-gradient-to-b hover:from-card-bg hover:to-black transition-all duration-300">
-            <div className="w-16 h-16 bg-[var(--color-brand-green)] rounded-2xl flex items-center justify-center mb-6">
-              <i className={`${service.icon} text-white text-2xl`}></i>
+          <div
+            key={service.id}
+            className="bg-card-bg rounded-3xl p-8 shadow-xl hover:bg-gradient-to-b hover:from-card-bg hover:to-black transition-all duration-300"
+          >
+            <div className="w-12 h-12 bg-[var(--color-brand-green)] rounded-full flex items-center justify-center ml-4 mb-6 relative">
+              <i className={`${service.icon} text-white text-4xl absolute mr-8 mt-10`}></i>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-4">{service.name}</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">
+              {service.name}
+            </h3>
             <p className="text-gray-300 text-sm">{service.description}</p>
           </div>
         ))}

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { JSX, memo } from "react";
+import 'remixicon/fonts/remixicon.css'
 
 // Types
 interface SocialLink {
@@ -26,14 +27,19 @@ SocialIcon.displayName = "SocialIcon";
 export default function InfoCard() {
   const socialLinks: SocialLink[] = [
     {
-      icon: <i className="fa-brands fa-linkedin-in text-black text-xl"></i>,
+      icon: <i className="ri-linkedin-box-line text-black text-xl"></i>,
       href: "https://linkedin.com/in/omkar-palika",
       label: "LinkedIn Profile",
     },
     {
-      icon: <i className="fa-brands fa-github text-black text-xl"></i>,
+      icon: <i className="ri-github-line text-black text-xl"></i>,
       href: "https://github.com/OmkarPalika",
       label: "GitHub Profile",
+    },
+    {
+      icon: <i className="text-black text-2xl text-center font-bold mb-1">un</i>,
+      href: "https://unstop.com/mentor/omkarpalika?ref=AsfSjJT", 
+      label: "Unstop Profile",
     },
   ];
 

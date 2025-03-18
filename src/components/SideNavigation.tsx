@@ -15,11 +15,11 @@ export default function SideNavigation() {
   const scrollHandler = useRef<(() => void) | null>(null);
 
   const navItems: NavItem[] = [
-    { name: "Home", href: "#home", icon: "fa-solid fa-house" },
-    { name: "Projects", href: "#projects", icon: "fa-regular fa-folder" },
-    { name: "Services", href: "#services", icon: "fa-solid fa-share-nodes" },
-    { name: "Experience", href: "#experience", icon: "fa-regular fa-comment" },
-    { name: "Contact", href: "#contact", icon: "fa-solid fa-location-dot" },
+    { name: "Home", href: "#home", icon: "ri-home-line" },
+    { name: "Projects", href: "#projects", icon: "ri-folder-line" },
+    { name: "Services", href: "#services", icon: "ri-file-edit-line" },
+    { name: "Experience", href: "#experience", icon: "ri-honour-line" },
+    { name: "Contact", href: "#contact", icon: "ri-send-plane-line" },
   ];
 
   const updateActiveSection = () => {
@@ -69,7 +69,7 @@ export default function SideNavigation() {
               >
                 <i className={`${item.icon} text-white text-lg`}></i>
               </Link>
-              <span className="absolute right-full mr-4 bg-black bg-opacity-80 text-white px-3 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <span className="absolute right-full bottom-3 mr-4 bg-black/80 text-white px-3 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 {item.name}
               </span>
             </li>

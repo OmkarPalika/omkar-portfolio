@@ -13,8 +13,8 @@ const scriptFont = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Xian Gallers - Web Designer & Developer",
-  description: "Portfolio website for Xian Gallers, web designer and developer based in Peru",
+  title: "Omkar Palika - Web Designer & Developer",
+  description: "Portfolio website for Omkar Palika, web designer and developer based in Peru",
 };
 
 export default function RootLayout({
@@ -27,10 +27,10 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
       </head>
-      <body className={`${inter.variable} ${scriptFont.variable} bg-dark-bg text-white min-h-screen`}>
+      <body className={`${inter.variable} ${scriptFont.variable} bg-[var(--color-dark-bg)] text-white min-h-screen`}>
         {children}
         <div className="fixed bottom-6 right-6 text-gray-600 text-sm font-light">
-          portfolio<br/>2025
+          Omkar Palika<br/>2025
         </div>
       </body>
     </html>

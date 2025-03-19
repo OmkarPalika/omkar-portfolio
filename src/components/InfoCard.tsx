@@ -96,10 +96,11 @@ export default function InfoCard() {
             questions, or project inquiries.
           </p>
           <button
-            className="bg-[var(--color-brand-green)] text-white py-2 mt-3 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-full w-full hover:bg-green-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+            className="bg-[var(--color-brand-green)] text-white py-2 mt-3 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-full w-full min-h-[40px] md:min-h-[48px] hover:bg-green-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
             onClick={() =>
               (window.location.href = "mailto:palikaomkar@gmail.com")
             }
+            aria-label="Send email to Omkar Palika"
           >
             Get In Touch
           </button>

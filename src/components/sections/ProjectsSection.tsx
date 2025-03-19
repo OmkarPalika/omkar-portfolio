@@ -87,7 +87,7 @@ export default function ProjectsSection() {
           <div key={id} className="bg-card-bg rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl">
             <div className="relative h-64">
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 transition-all duration-700 ease-in-out group-hover:opacity-75 scale-105 group-hover:scale-100"/>
-              <Image src={image} alt={name} fill priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+              <Image src={image} alt={name} fill priority={id === 1} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" quality={75} loading={id === 1 ? "eager" : "lazy"}
                 className="object-cover object-center transition-all duration-700 ease-in-out scale-105 group-hover:scale-100 group-hover:brightness-110"/>
             </div>
             <div className="p-6">

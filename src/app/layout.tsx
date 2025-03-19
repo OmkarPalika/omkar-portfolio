@@ -101,6 +101,7 @@ export default function RootLayout({
         />
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+        <meta name="google-site-verification" content="jXM-IUMm_ELHrEbs7QBZ_KBbIu5dxgyocOoCS8Lhsj8" />
       </head>
       <body className={`${inter} ${scriptFont.variable} bg-[var(--color-dark-bg)] text-white min-h-screen antialiased`}>
         {children}

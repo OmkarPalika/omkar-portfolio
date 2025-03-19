@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Tailwind theme customizations */
 @layer base {
   :root {
     --color-brand-green: #43A047;
@@ -8,62 +7,28 @@
     --color-card-bg: #1a1a1a;
   }
   
-  body {
-    @apply bg-[var(--color-dark-bg)] text-white;
-  }
-  
-  html {
-    @apply scroll-smooth;
-  }
+  body {@apply bg-[var(--color-dark-bg)] text-white}
+  html {@apply scroll-smooth}
 }
 
 @layer components {
-  .transition-hover {
-    @apply transition duration-300;
-  }
-  
-  .rounded-custom {
-    @apply rounded-3xl;
-  }
+  .transition-hover {@apply transition duration-300}
+  .rounded-custom {@apply rounded-3xl}
 }
 
-/* Color utility classes */
-.bg-dark-bg {
-  background-color: var(--color-dark-bg);
-}
+.bg-dark-bg {background-color: var(--color-dark-bg)}
+.bg-card-bg {background-color: var(--color-card-bg)}
+.text-brand-green {color: var(--color-brand-green)}
 
-.bg-card-bg {
-  background-color: var(--color-card-bg);
-}
-
-.text-brand-green {
-  color: var(--color-brand-green);
-}
-
-/* Animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from {opacity: 0; transform: translateY(-10px)}
+  to {opacity: 1; transform: translateY(0)}
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-in-out forwards;
-}
+.animate-fadeIn {animation: fadeIn .3s ease-in-out forwards}
 
-/* Smooth scrolling for Safari */
 @supports (-webkit-overflow-scrolling: touch) {
-  html {
-    scroll-behavior: smooth;
-  }
+  html {scroll-behavior: smooth}
 }
 
-/* Custom font */
-.font-script {
-  font-family: var(--font-script), cursive, serif;
-}
+.font-script {font-family: var(--font-script),cursive,serif}

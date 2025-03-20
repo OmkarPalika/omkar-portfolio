@@ -74,7 +74,7 @@ const projects: Project[] = [
     name: "AI-Hub",
     description:
       "A cutting-edge discussions platform enabling seamless interactions between Large Language Models (LLMs) and users, fostering collaborative learning and knowledge sharing in an AI-powered environment.",
-    image: "/images/projects/ai-hub.jpg",
+    image: "/images/projects/ai-hub.webp",
     tech: [
       <SiNextdotjs key="nextjs" />,
       <SiTypescript key="typescript" />,
@@ -88,7 +88,7 @@ const projects: Project[] = [
     name: "Ayur - An AI Vaidya",
     description:
       "An AI-powered assistant that provides personalized Ayurvedic health recommendations and guidance based on traditional principles, helping users achieve holistic wellbeing through customized suggestions.",
-    image: "/images/projects/ayur.jpg",
+    image: "/images/projects/ayur.webp",
     tech: [
       <RiFlutterFill key="flutter" />,
       <DartIcon key="dart" />,
@@ -102,7 +102,7 @@ const projects: Project[] = [
     name: "NeuroCode",
     description:
       "An innovative Integrated Development Environment (IDE) specifically designed for developers with disabilities, featuring voice commands, screen reader optimization, and customizable accessibility features.",
-    image: "/images/projects/neurocode.jpg",
+    image: "/images/projects/neurocode.webp",
     tech: [
       <SiJavascript key="javascript" />,
       <SiElectron key="electron" />,
@@ -116,7 +116,7 @@ const projects: Project[] = [
     name: "JARSI - Virtual Assistant",
     description:
       "A sophisticated virtual assistant powered by Reinforcement Learning (RL) that autonomously evolves its codebase through continuous learning, that set it apart from traditional static assistants",
-    image: "/images/projects/jarsi.jpg",
+    image: "/images/projects/jarsi.webp",
     tech: [
       <PythonIcon key="python-svg" />,
       <SiTensorflow key="tensorflow" />,
@@ -130,7 +130,7 @@ const projects: Project[] = [
     name: "Portfolio",
     description:
       "A modern and responsive personal portfolio website built with Next.js and TypeScript. Optimized for performance with Next.js Image component and CSS animations.",
-    image: "/images/projects/portfolio.png",
+    image: "/images/projects/portfolio.webp",
     tech: [
       <SiNextdotjs key="nextjs" />,
       <SiTypescript key="typescript" />,

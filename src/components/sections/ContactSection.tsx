@@ -52,7 +52,7 @@ export default function ContactSection() {
   };
 
   const baseClasses = "w-full px-5 py-4 rounded-xl transition duration-200";
-  const inputClasses = `${baseClasses} bg-gray-800 text-white border border-gray-700 focus:border-[var(--color-brand-green)] focus:outline-none hover:border-gray-600`;
+  const inputClasses = `${baseClasses} bg-[var(--color-card-bg)] text-white border border-gray-700 focus:border-[var(--color-brand-green)] focus:outline-none hover:border-gray-600`;
   const buttonClasses = `${baseClasses} bg-[var(--color-brand-green)] text-white hover:bg-green-700 flex items-center justify-center ${formStatus.isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`;
 
   return (

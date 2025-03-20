@@ -1,33 +1,35 @@
 // components/sections/ServicesSection.tsx
 import SectionLayout from "../SectionLayout";
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import { SiPython } from "react-icons/si";
 
 interface ServiceCardProps {
   id: number;
   name: ReactNode;
   description: string;
-  icon: string;
+  icon: string | React.ComponentType | React.ReactNode;
 }
 
 export default function ServicesSection() {
+  
   const services = [
     {
       id: 1,
       name: "Python Project Development",
       description: "Custom Python development for automation, data analysis, machine learning and backend services using modern frameworks and best practices.",
-      icon: "fa-brands fa-python"
+      icon: <SiPython className="text-white text-3xl" />
     },
     {
       id: 2, 
       name: "SEO Web Development",
       description: "Building SEO-optimized websites with technical best practices, content optimization, and analytics integration to improve search rankings and visibility.",
-      icon: "fa-solid fa-magnifying-glass-chart"
+      icon: "ri-seo-line"
     },
     {
       id: 3,
       name: "Application Development", 
       description: "Full-stack application development using modern technologies to create scalable, secure and feature-rich web and mobile applications.",
-      icon: "fa-solid fa-mobile-screen-button"
+      icon: "ri-smartphone-line"
     },
     {
       id: 4,
@@ -50,9 +52,15 @@ export default function ServicesSection() {
   ];
 
   const ServiceCard = ({name, description, icon}: ServiceCardProps) => (
-    <div className=" group bg-card-bg rounded-3xl p-8 shadow-xl hover:bg-gradient-to-b hover:from-card-bg hover:to-black transition-all duration-300">
+    <div className="group bg-card-bg rounded-3xl p-8 shadow-xl hover:bg-gradient-to-b hover:from-card-bg hover:to-black transition-all duration-300">
       <div className="w-12 h-12 bg-[var(--color-brand-green)] rounded-full flex items-center justify-center ml-4 mb-6 relative">
-        <i className={`${icon} text-white text-4xl absolute mr-8 mt-10`}/>
+        {typeof icon === 'string' ? (
+          <i className={`${icon} text-white text-4xl absolute mr-8 mt-10`}/>
+        ) : (
+          <div className="absolute mr-8 mt-10">
+            {typeof icon === 'function' ? React.createElement(icon) : icon}
+          </div>
+        )}
       </div>
       <h3 className="text-xl font-semibold text-white mb-4">{name}</h3>
       <p className="text-gray-300 text-sm">{description}</p>

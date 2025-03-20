@@ -42,7 +42,7 @@ export default function ExperienceSection() {
         subtitle: "Java Backend Development",
         date: "05/24 - 07/24",
         meta: "Hyderabad, India",
-        description: "Developed backend services using Java. Worked on database design, API development, and integration with frontend applications. Enhanced optimisation using modern techniques.",
+        description: "Developed backend services using Java. Worked on database design, API development, and integration with frontend applications.",
       },
       {
         id: 2,

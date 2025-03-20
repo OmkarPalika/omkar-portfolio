@@ -1,6 +1,5 @@
-import type { IConfig } from 'next-sitemap'
-
-const config: IConfig = {
+/** @type {import('next-sitemap').IConfig} */
+const config = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://omkarpalika.vercel.app',
   generateRobotsTxt: true,
   generateIndexSitemap: false,

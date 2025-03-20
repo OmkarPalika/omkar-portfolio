@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import "remixicon/fonts/remixicon.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,13 +19,6 @@ const scriptFont = Dancing_Script({
   weight: ["400", "500", "600", "700"],
 });
 
-// Safe URL handling for metadata
-const url =
-  process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://omkarpalika.vercel.app";
-
-// Build metadata object safely
 const buildMetadata = (): Metadata => {
   const metadata: Metadata = {
     title:
@@ -35,7 +29,7 @@ const buildMetadata = (): Metadata => {
     creator: "Omkar Palika",
     keywords: [
       "Tech Enthusiast",
-      "AI/ML Developer",
+      "AI/ML Developer", 
       "Python Developer",
       "Web Developer",
       "Software Engineer",
@@ -43,7 +37,11 @@ const buildMetadata = (): Metadata => {
       "Deep Learning",
       "Cloud Computing",
     ],
-    metadataBase: new URL(url),
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "https://omkarpalika.vercel.app"
+    ),
     robots: {
       index: true,
       follow: true,
@@ -82,7 +80,6 @@ const buildMetadata = (): Metadata => {
     },
   };
 
-  // Only add verification if the environment variable exists
   if (process.env.GOOGLE_VERIFICATION_CODE) {
     metadata.verification = {
       google: process.env.GOOGLE_VERIFICATION_CODE,
@@ -98,14 +95,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" data-theme="dark">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="apple-touch-icon"

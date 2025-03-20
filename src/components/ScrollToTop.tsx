@@ -1,6 +1,7 @@
 // components/ScrollToTop.tsx
 "use client";
 import { useEffect, useState } from "react";
+import { arrowIcon } from "@/data/iconData";
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
@@ -21,7 +22,7 @@ export default function ScrollToTop() {
           : "opacity-0 translate-y-10 pointer-events-none"
       }`}
     >
-      <i className="ri-arrow-up-s-line text-white" />
+      <i className={`${arrowIcon} text-2xl text-white"`} />
     </button>
   );
 }

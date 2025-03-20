@@ -3,7 +3,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { SiLeetcode } from "react-icons/si";
+import { SiHackerrank, SiLeetcode } from "react-icons/si";
+import { footerSocialLinks as socialLinks } from "@/data/iconData";
 
 export default function Footer() {
   const [year, setYear] = useState<number | null>(null);
@@ -11,16 +12,6 @@ export default function Footer() {
   useEffect(() => {
     setYear(new Date().getFullYear());
   }, []);
-
-  const socialLinks = [
-    { href: "https://www.instagram.com/omkarpalika", iconClass: "fa-instagram", ariaLabel: "Instagram Profile" },
-    { href: "https://www.linkedin.com/in/omkar-palika/", iconClass: "fa-linkedin", ariaLabel: "LinkedIn Profile" },
-    { href: "https://github.com/OmkarPalika", iconClass: "fa-github", ariaLabel: "GitHub Profile" },
-    { href: "https://leetcode.com/palikaomkar/", icon: <SiLeetcode className="text-white" />, ariaLabel: "LeetCode Profile" },
-    { href: "https://www.hackerrank.com/palikaomkar_22_1", iconClass: "fa-hackerrank",  ariaLabel: "HackerRank Profile" },
-    { href: "https://g.dev/omkar-palika", iconClass: "fa-google", ariaLabel: "Google Developer Profile" },
-    { href: "https://learn.microsoft.com/en-us/users/omkarpalika-4758/", iconClass: "fa-microsoft", ariaLabel: "Microsoft Learn Profile" },
-  ];
 
   return (
     <footer className="bg-[var(--color-card-bg)] py-12 transition-colors duration-300">
@@ -42,7 +33,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <h3 className="text-white text-lg font-semibold mb-4">Profiles</h3>
             <div className="flex gap-4">
-              {socialLinks.map(({ href, iconClass, icon, ariaLabel }) => (
+                {socialLinks.map(({ href, iconClass, ariaLabel }) => (
                 <a
                   key={href}
                   href={href}
@@ -51,9 +42,15 @@ export default function Footer() {
                   aria-label={ariaLabel}
                   className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[var(--color-brand-green)] hover:scale-110 transition-all duration-300"
                 >
-                  {iconClass ? <i className={`fa-brands ${iconClass} text-white`} /> : icon}
+                  {iconClass ? (
+                    <i className={`${iconClass} text-white`} />
+                  ) : href.includes('hackerrank') ? (
+                    <SiHackerrank className="text-white" />
+                  ) : href.includes('leetcode') ? (
+                    <SiLeetcode className="text-white" />
+                  ) : null}
                 </a>
-              ))}
+                ))}
             </div>
           </div>
         </div>

@@ -1,19 +1,21 @@
+/* app/globals.css */
+
 @import "tailwindcss";
 
 @layer base {
   :root {
-    /* Brand Colors */
+    /* Fonts */
+    --font-serif: 'Merriweather', serif;
+    --font-script: 'Dancing Script', cursive;
+
+    /* Light Theme Colors */
     --color-brand-green: #43a047;
-    --color-brand-green-hover: #43a047;
-
-    /* Background Colors */
-    --color-dark-bg: #0a0a0a;
-    --color-card-bg: #1a1a1a;
-    --color-card-hover: #242424;
-
-    /* Text Colors */
-    --color-light-text: #f5f5f5;
-    --color-muted-text: #9e9e9e;
+    --color-brand-green-hover: #2f6f2f;
+    --color-bg: #ffffff;
+    --color-card-bg: #151515;
+    --color-card-hover: #e5e5e5;
+    --color-text: #0a0a0a;
+    --color-muted-text: #666666;
     --color-accent: #43a047;
 
     /* Transitions */
@@ -22,26 +24,70 @@
     --transition-slow: 700ms;
   }
 
+  /* Dark Theme Colors */
+  .dark {
+    --color-brand-green: #43a047;
+    --color-brand-green-hover: #2f6f2f;
+    --color-bg: #0a0a0a;
+    --color-card-bg: #1a1a1a;
+    --color-card-hover: #242424;
+    --color-text: #f5f5f5;
+    --color-muted-text: #9e9e9e;
+    --color-accent: #43a047;
+  }
+
+  /* Dark mode transition smoothing */
+  :root,
+  .dark {
+    @apply transition-colors duration-[var(--transition-normal)];
+  }
+
   body {
-    @apply bg-[var(--color-dark-bg)] text-white antialiased min-h-screen;
+    @apply bg-[var(--color-bg)] text-[var(--color-text)] antialiased min-h-screen;
   }
 
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth bg-[var(--color-bg)] text-[var(--color-text)];
   }
 
   a {
     @apply transition-colors duration-[var(--transition-fast)];
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold mb-4 leading-tight;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  p,
+  ul,
+  ol {
+    @apply mb-6 leading-relaxed;
+  }
+
+  /* Improved link styling */
+  a:not(.btn-primary):not(.btn-secondary) {
+    @apply text-[var(--color-accent)] hover:text-[var(--color-brand-green-hover)] underline-offset-2 hover:underline;
   }
 }
 
 @layer components {
   .transition-hover {
     @apply transition duration-[var(--transition-slow)] ease-in-out;
-  }
-
-  .shadow-card {
-    @apply shadow-xl hover:shadow-2xl transition-shadow duration-[var(--transition-normal)];
   }
 
   .btn-primary {
@@ -51,7 +97,7 @@
   }
 
   .btn-secondary {
-    @apply bg-[var(--color-card-bg)] text-white
+    @apply bg-black text-white
            hover:bg-[var(--color-brand-green)]
            transition-colors duration-[var(--transition-fast)] focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-brand-green)];
   }
@@ -65,16 +111,70 @@
   }
 
   .grid-layout {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+    @apply grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-[var(--color-card-bg)] rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow duration-[var(--transition-normal)];
+  }
+
+  /* Input fields */
+  .form-input {
+    @apply w-full rounded border border-gray-300 dark:border-gray-700 px-4 py-2
+           focus:ring-2 focus:ring-[var(--color-brand-green)] focus:border-transparent
+           bg-white dark:bg-gray-800 text-[var(--color-text)];
+  }
+
+  /* Improved buttons with size variants */
+  .btn {
+    @apply px-6 py-2 rounded-md font-medium inline-flex items-center justify-center;
+  }
+
+  .btn-sm {
+    @apply px-4 py-1 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-8 py-3 text-lg;
+  }
+
+  /* Container class for consistent spacing */
+  .container-custom {
+    @apply px-4 mx-auto max-w-7xl w-full;
   }
 }
 
-.bg-dark-bg {
-  background-color: var(--color-dark-bg);
+@layer utilities {
+  /* Screen reader utilities */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+
+  /* Skip to content link */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50
+           bg-[var(--color-bg)] text-[var(--color-text)] px-4 py-2 rounded-md 
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2;
+  }
+
+  /* Fluid spacing utility */
+  .space-y-fluid {
+    @apply space-y-4 md:space-y-6 lg:space-y-8;
+  }
+
+  /* Responsive container padding */
+  .section-padding {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+}
+
+.bg-theme {
+  background-color: var(--color-bg);
   transition: background-color var(--transition-normal);
 }
 
-.bg-card-bg {
+.bg-card {
   background-color: var(--color-card-bg);
   transition: background-color var(--transition-normal);
 }
@@ -84,16 +184,12 @@
   transition: color var(--transition-fast);
 }
 
-.text-light {
-  color: var(--color-light-text);
+.text-theme {
+  color: var(--color-text);
   transition: color var(--transition-fast);
 }
 
-.text-muted {
-  color: var(--color-muted-text);
-  transition: color var(--transition-fast);
-}
-
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -109,6 +205,39 @@
   animation: fadeIn var(--transition-fast) ease-in-out forwards;
 }
 
+/* Staggered animation for lists */
+@keyframes fadeInStaggered {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-children > * {
+  animation: fadeInStaggered var(--transition-fast) ease-out forwards;
+  opacity: 0;
+}
+
+.stagger-children > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-children > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-children > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-children > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stagger-children > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
 @supports (-webkit-overflow-scrolling: touch) {
   html {
     scroll-behavior: smooth;
@@ -120,30 +249,30 @@
   font-display: swap;
 }
 
+/* Loading states */
+.loading-skeleton {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+}
+
+/* Optimized images */
+.img-responsive {
+  @apply w-full h-auto object-cover;
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply text-black bg-white;
+  }
+
+  .no-print {
+    @apply hidden;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--color-dark-bg);
-    color: var(--color-light-text);
-    transition: background-color var(--transition-normal),
-      color var(--transition-fast);
-  }
-
-  a {
-    color: var(--color-brand-green);
-  }
-
-  .bg-card-bg {
-    background-color: var(--color-card-bg);
-  }
-
-  .text-muted {
-    color: var(--color-muted-text);
   }
 }

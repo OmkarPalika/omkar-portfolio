@@ -2,20 +2,26 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-
-type NavItem = { name: string; href: string; icon: string };
+import { navIcons as navItems } from "@/data/iconData";
 
 export default function SideNavigation() {
   const [activeSection, setActiveSection] = useState("");
+  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.getAttribute('data-theme') === 'dark';
+    }
+    return true;
+  });
   const scrollHandler = useRef<(() => void) | null>(null);
 
-  const navItems: NavItem[] = [
-    ["Home", "#home", "ri-home-line"],
-    ["Projects", "#projects", "ri-folder-line"], 
-    ["Services", "#services", "ri-file-edit-line"],
-    ["Experience", "#experience", "ri-honour-line"],
-    ["Contact", "#contact", "ri-send-plane-line"]
-  ].map(([name, href, icon]) => ({ name, href, icon }));
+  useEffect(() => {
+    const html = document.documentElement;
+    if (isDarkTheme) {
+      html.setAttribute('data-theme', 'dark');
+    } else {
+      html.removeAttribute('data-theme');
+    }
+  }, [isDarkTheme]);
 
   useEffect(() => {
     const updateActiveSection = () => {
@@ -42,7 +48,11 @@ export default function SideNavigation() {
         window.removeEventListener("scroll", scrollHandler.current);
       }
     };
-  }, [navItems]);
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
 
   return (
     <nav className="hidden md:block fixed right-6 top-1/2 -translate-y-1/2 z-50">
@@ -67,6 +77,19 @@ export default function SideNavigation() {
               </span>
             </li>
           ))}
+          <li>
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle Theme"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition-all duration-300"
+            >
+              <i
+                className={`${
+                  isDarkTheme ? "ri-sun-line" : "ri-moon-line"
+                } text-lg`}
+              />
+            </button>
+          </li>
         </ul>
       </div>
     </nav>

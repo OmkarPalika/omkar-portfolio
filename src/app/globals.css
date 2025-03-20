@@ -2,33 +2,148 @@
 
 @layer base {
   :root {
-    --color-brand-green: #43A047;
+    /* Brand Colors */
+    --color-brand-green: #43a047;
+    --color-brand-green-hover: #43a047;
+
+    /* Background Colors */
     --color-dark-bg: #0a0a0a;
     --color-card-bg: #1a1a1a;
+    --color-card-hover: #242424;
+
+    /* Text Colors */
+    --color-light-text: #f5f5f5;
+    --color-muted-text: #9e9e9e;
+    --color-accent: #43a047;
+
+    /* Transitions */
+    --transition-fast: 300ms;
+    --transition-normal: 500ms;
+    --transition-slow: 700ms;
   }
-  
-  body {@apply bg-[var(--color-dark-bg)] text-white}
-  html {@apply scroll-smooth}
+
+  body {
+    @apply bg-[var(--color-dark-bg)] text-white antialiased min-h-screen;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  a {
+    @apply transition-colors duration-[var(--transition-fast)];
+  }
 }
 
 @layer components {
-  .transition-hover {@apply transition duration-300}
-  .rounded-custom {@apply rounded-3xl}
+  .transition-hover {
+    @apply transition duration-[var(--transition-slow)] ease-in-out;
+  }
+
+  .shadow-card {
+    @apply shadow-xl hover:shadow-2xl transition-shadow duration-[var(--transition-normal)];
+  }
+
+  .btn-primary {
+    @apply bg-[var(--color-brand-green)] text-white 
+           hover:bg-[var(--color-brand-green-hover)]
+           transition-all duration-[var(--transition-fast)] focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-brand-green)];
+  }
+
+  .btn-secondary {
+    @apply bg-[var(--color-card-bg)] text-white
+           hover:bg-[var(--color-brand-green)]
+           transition-colors duration-[var(--transition-fast)] focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-brand-green)];
+  }
+
+  .text-muted {
+    @apply text-[var(--color-muted-text)] transition-colors duration-[var(--transition-fast)];
+  }
+
+  .text-accent {
+    @apply text-[var(--color-accent)] transition-colors duration-[var(--transition-fast)];
+  }
+
+  .grid-layout {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
 }
 
-.bg-dark-bg {background-color: var(--color-dark-bg)}
-.bg-card-bg {background-color: var(--color-card-bg)}
-.text-brand-green {color: var(--color-brand-green)}
+.bg-dark-bg {
+  background-color: var(--color-dark-bg);
+  transition: background-color var(--transition-normal);
+}
+
+.bg-card-bg {
+  background-color: var(--color-card-bg);
+  transition: background-color var(--transition-normal);
+}
+
+.text-brand-green {
+  color: var(--color-brand-green);
+  transition: color var(--transition-fast);
+}
+
+.text-light {
+  color: var(--color-light-text);
+  transition: color var(--transition-fast);
+}
+
+.text-muted {
+  color: var(--color-muted-text);
+  transition: color var(--transition-fast);
+}
 
 @keyframes fadeIn {
-  from {opacity: 0; transform: translateY(-10px)}
-  to {opacity: 1; transform: translateY(0)}
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-fadeIn {animation: fadeIn .3s ease-in-out forwards}
+.animate-fadeIn {
+  animation: fadeIn var(--transition-fast) ease-in-out forwards;
+}
 
 @supports (-webkit-overflow-scrolling: touch) {
-  html {scroll-behavior: smooth}
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-.font-script {font-family: var(--font-script),cursive,serif}
+.font-script {
+  font-family: var(--font-script), cursive, serif;
+  font-display: swap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-light-text);
+    transition: background-color var(--transition-normal),
+      color var(--transition-fast);
+  }
+
+  a {
+    color: var(--color-brand-green);
+  }
+
+  .bg-card-bg {
+    background-color: var(--color-card-bg);
+  }
+
+  .text-muted {
+    color: var(--color-muted-text);
+  }
+}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { memo } from "react";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import { isValidUrl } from "@/utils/urlValidator";
 
 function MainProfile() {
   return (
@@ -12,7 +13,7 @@ function MainProfile() {
           src="/images/profile.png"
           alt="Omkar Palika full profile"
           fill
-          className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          className="object-cover object-center transition-transform duration-[var(--transaction-fast)] group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 33vw"
           priority
           quality={90}
@@ -28,17 +29,17 @@ function MainProfile() {
               </h1>
               <div className="flex flex-col md:flex-row gap-3 lg:gap-5 w-full justify-center items-center">
                 {[
-                  { href: "#projects", label: "Projects", bg: "bg-[var(--color-brand-green)]", hoverBg: "hover:bg-green-700" },
-                  { href: "#services", label: "Services", bg: "bg-black", hoverBg: "hover:bg-[var(--color-brand-green)]" },
-                ].map(({ href, label, bg, hoverBg }) => (
+                  { href: "#projects", label: "Projects", btnType: "btn-primary" },
+                  { href: "#services", label: "Services", btnType: "btn-secondary" },
+                ].map(({ href, label, btnType}) => (
                   <Link
                     key={href}
-                    href={href}
-                    className={`w-fit md:w-1/2 ${bg} text-white px-5 md:px-6 lg:px-8 py-2 md:py-2.5 lg:py-3 rounded-full text-sm md:text-base ${hoverBg} transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-white/50`}
+                    href={isValidUrl(href) ? href : ""}
+                    className={`w-fit md:w-1/2 ${btnType} px-5 md:px-6 lg:px-8 py-2 md:py-2.5 lg:py-3 rounded-full text-sm md:text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group`}
                     scroll={true}
                   >
-                    <span>{label}</span>
-                    <ChevronRightIcon className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" />
+                    <span className="text-white">{label}</span>
+                    <ChevronRightIcon className="w-4 h-4 text-white transform transition-transform duration-[var(--transition-fast)] group-hover:translate-x-1" />
                   </Link>
                 ))}
               </div>
